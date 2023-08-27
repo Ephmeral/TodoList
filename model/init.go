@@ -21,10 +21,11 @@ func Database(conn string) {
 	if gin.Mode() == "release" {
 		db.LogMode(false)
 	}
-
+	db.SingularTable(true) // 表格名字不加s，默认gorm会写成users
 	sqlDB := db.DB()
 	sqlDB.SetMaxIdleConns(20)  //设置连接池，空闲
 	sqlDB.SetMaxOpenConns(100) //打开
 	sqlDB.SetConnMaxLifetime(time.Second * 30)
 	DB = db
+	migration()
 }
