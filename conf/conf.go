@@ -34,10 +34,10 @@ func Init() {
 func LoadServer(file *ini.File) {
 	AppMode = file.Section("service").Key("AppMode").String()
 	HttpPort = file.Section("service").Key("HttpPort").String()
+	fmt.Println("read from config.ini, the http port = ", HttpPort)
 }
 
 func LoadMySQL(file *ini.File) {
-	HttpPort = file.Section("mysql").Key("HttpPort").String()
 	Db = file.Section("mysql").Key("Db").String()
 	DbHost = file.Section("mysql").Key("DbHost").String()
 	DbPort = file.Section("mysql").Key("DbPort").String()
